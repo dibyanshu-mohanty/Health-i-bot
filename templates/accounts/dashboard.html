@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid" >
+    <div class="row">              
+        <main class="col-md-9 ml-sm-auto col-lg-12 px-md-5 py-4" style="background-color: #f1f0ef;">            
+            <h1 class="h1 px-3">Dashboard: Welcome {{ user.username }}<a id="WA" href="" data-action="share/whatsapp/share" target="_blank"> <i id="share-button" class="fab fa-whatsapp-square" style="color: black;"></i></a></h1>
+            
+            <div class="row my-4">
+                <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                    <div class="card" >
+                        <h5 class="card-header" style=" background-color: #6a9dfd;color: black;">Pulse Rate</h5>
+                        <div class="card-body" style="background-color:#f2f5d8;">
+                          <h5 class="card-title">{{ hdata }}</h5>
+                          <p class="card-text">Updated on: {{ tst }}</p>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4 mb-lg-0 col-lg-4">
+                    <div class="card">
+                        <h5 class="card-header" style=" background-color: #6a9dfd;">Temperature</h5>
+                        <div class="card-body"  style="background-color:#f2f5d8;">
+                          <h5 class="card-title">{{ tdata }}°F</h5>
+                          <p class="card-text">Updated on: {{ tst }}</p>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-12 col-md-6 mb-4 mb-lg-0 col-lg-4">
+                    {% include 'partials/_alerts.html' %}
+                    <div class="card">
+                        <h5 class="card-header" style=" background-color: #6a9dfd;">Oxygen Levels</h5>
+                        <div class="card-body"  style="background-color:#f2f5d8;">
+                          <h5 class="card-title">95</h5>
+                          <p class="card-text">Updated on: {{tst}}</p>
+                        
+                        </div>
+                      </div>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-12 col-xl-8 mb-4 mb-lg-0">
+                    <div class="card">
+                        <h5 class="card-header" style=" background-color: #6a9dfd;">Latest Updates</h5>
+                        <div class="card-body" style="background-color:#f2f5d8;">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Time</th>
+                                        <th scope="col">Pulse rate</th>
+                                        <th scope="col">Temperature</th>
+                                        <th scope="col">Condition update</th>                                         
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for i in data %}
+                                      <tr>
+                                        <th scope="row">{{ lst }}</th>
+                                        <td>{{ tst }}</td>
+                                        <td>{{ i.field1 }} </td>
+                                        <td> {{ i.field2 }}°F</td>
+                                        <td>add text </td>                                          
+                                      </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                  </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="card mt-3">
+                        <h5 class="card-header" style=" background-color: #6a9dfd;">Oxygen levels</h5>
+                        <div class="card-body" style="background-color: #f2f5d8;" id="traffic-chart"></div>
+                    </div>
+             
+                </div>
+                
+                <div class="col-12 col-xl-4">
+                    <div class="card">
+                        <h5 class="card-header" style=" background-color: #6a9dfd;">Heart Beat </h5>
+                        <div class="card-body" style="background-color: #f2f5d8;">
+                            <iframe width="420" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1382546/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&yaxis=Heart+beat+"></iframe>
+                              
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h5 class="card-header" style=" background-color: #6a9dfd;">Temperature </h5>
+                        <div class="card-body" style="background-color: #f2f5d8;">
+                            <iframe width="420" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1382546/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&yaxis=Fahrenheit"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}

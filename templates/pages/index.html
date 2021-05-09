@@ -1,0 +1,370 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+<!-- BOOK A DEMO -->
+<div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="background-color: #dcd6f7;">
+        <div class="modal-header text-center" style="background-color: #a6b1e1;">
+          <h4 class="modal-title w-100 font-weight-bold">Book a Demo</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form class="form" method="POST" action="{% url 'contact' %}" role="form">
+            {% csrf_token %}
+          <div class="form-group px-3">
+            <label class="control-label" for="signupName">Your name</label>
+            <input id="signupName" name="name" type="text" maxlength="50" class="form-control">
+          </div>
+          <div class="form-group px-3">
+            <label class="control-label" for="email">Email</label>
+            <input id="signupEmail" name="email" type="email" maxlength="50" class="form-control">
+          </div>
+          <div class="form-group px-3">
+            <label class="control-label" for="phone">Phone</label>
+            <input id="phone" name="phone" type="text" maxlength="50" class="form-control">
+          </div>
+          <div class="form-group px-3">
+            <label class="control-label" for="address">Address</label>
+            <input id="address" type="text" maxlength="75" class="form-control">
+          </div>
+          <div class="form-group px-3">
+            <label class="control-label" for="message">Message</label>
+            <input id="message" name="message" type="text" maxlength="300" class="form-control">
+          </div>
+          <div class="form-group px-3">
+            <button id="signupSubmit" type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" style="background-color: #424874;">Book A Demo</button>
+          </div>
+          <p class="px-3"> Got Other Queries? Contact us at <a style="color:#04009a;" href="">Health-I-Bot</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+<!-- LOGIN -->
+  <div class="modal fade" id="modalLoginForm2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="background-color: #dcd6f7;">
+        <div class="modal-header text-center" style="background-color: #a6b1e1;">
+          <h4 class="modal-title w-100 font-weight-bold">Sign-in</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <div class="md-form mb-3">
+                <i class="fas fa-user prefix grey-text"></i>
+                <input type="text" id="orangeForm-name" name="username" placeholder="Username" class="form-control validate">
+            </div>
+
+          <div class="md-form mb-3">
+            <i class="fas fa-lock prefix grey-text"></i>
+            <input type="password" id="defaultForm-pass" class="form-control validate" name="password" placeholder="Password">
+          </div>
+
+          <div class="md-form mb-3">
+            <button type="submit" role="button" class="btn  btn-lg" style="margin-left: 37%; background-color: #424874;color: white;">Login</button>
+
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- REGISTER -->
+<section id="register">
+  <div class="modal fade" id="modalRegisterForm1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content" style="background-color: #dcd6f7;">
+          <div class="modal-header text-center" style="background-color: #a6b1e1;">
+            <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          
+          <div class="modal-body mx-3">
+          <form action="{% url 'register' %}" method="POST">
+              {% csrf_token %}
+            <div class="md-form mb-3">
+              <i class="fas fa-user prefix grey-text"></i>
+              <input type="text" id="orangeForm-name" name="first_name" placeholder="First Name" class="form-control">
+            </div>
+            <div class="md-form mb-3">
+              <i class="fas fa-user prefix grey-text"></i>
+              <input type="text" id="orangeForm-name" name="last_name" placeholder="Last Name" class="form-control">
+            </div>
+            <div class="md-form mb-3">
+              <i class="fas fa-envelope prefix grey-text"></i>
+              <input type="email" id="orangeForm-email" class="form-control" name="email" placeholder="Email Address">
+            </div>
+            <div class="md-form mb-3">
+                <i class="fas fa-user-tie"></i>
+                <input type="text" id="orangeForm-name" name="username" placeholder="Username" class="form-control">
+            </div>
+            <div class="md-form mb-3">
+              <i class="fas fa-lock prefix grey-text"></i>
+              <input type="password" id="orangeForm-pass" class="form-control" name="password" placeholder="Password">
+  
+            </div>
+            <div class="md-form mb-3">
+              <i class="fas fa-lock prefix grey-text"></i>
+              <input type="password" id="orangeForm-pass" class="form-control" name="password2" placeholder="Confirm Password">
+  
+            </div>
+            <div class="md-form mb-3">
+              <i class="far fa-id-card"></i>
+              <input type="text" id="orangeForm-number" class="form-control" name="tokencode" placeholder="Product ID">
+            </div>
+            <div class="md-form mb-3">
+              <button type="submit" role="button" class="btn btn-lg" style="margin-left: 37%;background-color: #424874;color: white;">Register</button>
+  
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>  
+
+  <!-- LANDING -->
+  <section class="py-3 pb-5" id="landing" ; style="background-color: #6a9dfd;">
+    <div class="container py-2" style="font-family: 'Barlow Condensed', sans-serif;padding: 0;">
+      <div class="row" style="margin: 0;padding: 0;">
+        <div class="col-md-6 sm-6 mt-5">
+          <div class="content">
+            <h1 id="companyname">
+              HEALTH <br> MONITORING <br>
+              AT HOME
+            </h1>
+            <h3 class="my-5" style="letter-spacing: 2px;">
+              Home Quarantined ? Health Degrading ? <br> We got you covered ! 
+            </h3>
+          </div>
+        </div>
+        <div class="col-md-6 sm-6 px-3">
+          <div class="row pb-5 mb-4">
+            {% include 'partials/_alerts.html' %}
+            <img src="{% static 'images/home.jpg' %}" class="img-fluid" id="aunty">
+          </div>
+          <div class="row" style="margin-left: 80%;margin-top: -10%;">
+            <img src="{% static 'images/computer.png' %}" style="width: 250px;" class="img-fluid " alt="">
+          </div>
+        </div>
+      </div>
+    </div> 
+  </section>
+  <!-- PRODUCT -->
+  <section id="featured" class="py-3" style="background-color: #f1f0ef;">
+    <h2 id="tagline" style="letter-spacing: 1px; word-spacing: 2px; font-size: 26px;">TAKING ONLINE CONSULTATION TO THE NEXT LEVEL</h2>
+    <div class="container" style="margin: 0;padding: 0;">
+      <div class="row mb-3 pb-2 " style="margin: 0;padding: 0;">
+        <div class="col-md-6 sm-6 mt-5">
+          <img class="img-fluid" src="{% static 'images/illustration.png' %}" alt="">
+        </div>
+        <div class="col-md-6 sm-6 mt-5 py-3" style="margin: 0;padding: 0;">         
+          <h2 id="h21" class="my-3" style="font-size: x-large;font-style: italic;color: black;"><i class="fas fa-clipboard-check"></i>  Regular track of your temperature, heartbeats, and oxygen levels
+            accessible in your doctor's mobile phone</h2>
+            <h4 id ="h21" class="my-3" style="font-size: x-large;font-style: italic;color: black;"><i class="fas fa-clipboard-check"></i> Attendants need not come close to patients now to check the health status </h4>
+            <h4 class="my-3" style="font-size: x-large;font-style: italic;color: black;" id="h21"><i class="fas fa-clipboard-check"></i> You can also add COVID Related Resources for your state  </h4>       
+          <h4 class="my-5" id="h22">
+            <i class="fas fa-exclamation-triangle"></i> No longer critical moments,get notified before hand
+          </h4>
+          </h3>
+          <div class="row" style="margin: 0;padding: 0;">
+            <div class="col sm-6 py-3">
+              <a href=""  data-toggle="modal" data-target="#modalLoginForm2">
+              <button type="button" style="font-weight: bolder; width: 80px;" class="btn btn-dark" >Login</button></a>
+            </div>
+            <div class="col sm-6 py-3">
+              <a href=""  data-toggle="modal" data-target="#modalRegisterForm1">
+              <button  type="button" style="font-weight: bolder;" class="btn btn-dark">Register</button></a>
+            </div>
+            <div class="col sm-6 py-3">
+              <a href="{% url 'covids' %}">
+              <button  type="button" style="font-weight: 500; " class="btn btn-dark">COVID Resources</button></a>
+            </div>           
+          </div>
+        </div>
+        <img id="docphone" src="{% static 'images/415.jpg' %}" class="" alt="" style="position: absolute;
+                width: 250px;
+                margin-left: 83.5%;
+                margin-top: -1.5%;">
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+
+  <section id="Blog" class="py-5" style="background-color: #f1f0ef;">
+    <div class="b-mid-conatiner">
+      <div class="bp-i">
+        <h2 id="blog" class="py-2 px-5"><strong>BLOG</strong></h2>
+        <h4 class="py-2 px-5" id="blogf">Get Inspired with the world of Robotics and Healthcare </h4>
+      </div>
+      <div class="BP">
+        <div class="card-deck px-5 outline-dark" style="margin: 0; padding: 0;">
+          <div class="card" style="background-color: white;">
+            <img src="{% static 'images/education.jpg' %}" class="img-fluid" alt="..." style="height: 49%">
+            <div class="card-body" style="background-color: #e4f9f5;">
+              <h5 class="card-title"><b>Robotics is changing the face of medicine</b></h5>
+              <p class="card-text">
+                Today, companies are leveraging advances in the tech to develop new robotic applications to explore the future of medicine — including those related to bionics, disease discovery, and rehabilitation.
+              </p>
+            </div>
+            <div class="card-footer" style="background-color: #71c9ce;">
+              <a href="https://medium.com/predict/the-trial-of-an-artificial-brain-84edc401c6c6" target="_blank">
+                <button type="button" style="font-weight: bolder;" class="btn btn-outline-dark">Read More &#8594</button>
+              </a>
+            </div>
+          </div>
+          <div class="card" style="background-color: white;">
+            <img src="{% static 'images/render-robot.png' %}" style="height: 49%;" class="img-fluid" alt="...">
+            <div class="card-body" style="background-color: #e4f9f5;">
+              <h5 class="card-title"><b>Robotics in DNA</b></h5>
+              <p class="card-text">Researchers have already created DNA robots that can walk, while others have shown DNA robots can pick up and drop off molecular cargo.
+                But this new study shows DNA robots can walk, sort, and work together — all at once.</p>
+            </div>
+            <div class="card-footer" style="background-color: #71c9ce;">
+              <a href="https://admantium.medium.com/robot-systems-hardware-overview-56e55e310e91">
+                <button type="button" style="font-weight: bolder;" class="btn btn-outline-dark">Read More &#8594;</button>
+              </a>
+            </div>
+          </div>
+          <div class="card" style="background-color: white;">
+            <img src="{% static 'images/professional-eyes.png' %}" class="img-fluid" style="height: 49%;" alt="...">
+            <div class="card-body" style="background-color: #e4f9f5">
+              <h5 class="card-title"><b>Opthalmology and Robotics</b></h5>
+              <p class="card-text">When you build your own robot, you need to make two essential decisions: Its hardware and software. My background is
+                software development, so I will start to investigate the design questions for my robot from that direction as well.</p>
+            </div>
+            <div class="card-footer" style="background-color: #71c9ce;">
+              <a href="https://admantium.medium.com/self-made-robot-software-stack-overview-c39d5f53ed28">
+                <button type="button" style="font-weight: bolder;" class="btn btn-outline-dark">Read More &#8594;</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- TEAM -->
+  <section class="my-5 py-5" style="background-color: #f1f0ef;">
+    <div class="section text-center">
+      <h2 class="title py-3 mb-5"> <strong>MEET THE TEAM</strong></h2>
+      <div class="team">
+        <div class="row px-5" style="margin: 0;padding: 0;">
+          <div class="col-md-4">
+            <div class="team-member">
+              <div class="card card-plain " style="background-color: #e4f9f5;">
+                <div class="row" style="background-color: #f0f5f9;margin: 0;">
+                  <div class="col-md-4 ml-auto mr-auto">
+                    <img src="https://media-exp1.licdn.com/dms/image/C4E03AQG7RCNvieIN2g/profile-displayphoto-shrink_800_800/0/1614166188439?e=1625702400&v=beta&t=wm7AlYwmKm7dIDzrnt9OdvHdSuzfs9bzZs8YttCiRvQ" alt="Thumbnail Image"
+                      class="img-raised rounded-circle img-fluid">
+                  </div>
+                </div>
+                <h4 class="card-title py-2">Dibyanshu Mohanty
+                  <br>
+                  <small class="card-description text-muted">Back-end Developer</small>
+                </h4>
+                <div class="card-body">
+                  <p class="card-description">Skilled Back-end Dev , fluent with Django REST framework and APIs.</p>
+                </div>
+                <div class="card-footer justify-content-center">
+                  <a href="" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
+                  <a href="" class="btn btn-link btn-just-icon"><i class="fa fa-instagram"></i></a>
+                  <a href="https://www.linkedin.com/in/dibyanshu-mohanty-37a2b71b8/" target="_blank" class="btn btn-link btn-just-icon"><i class="fa fa-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="team-member">
+              <div class="card card-plain" style="background-color: #e4f9f5;">
+                <div class="row" style="background-color: #f0f5f9;margin: 0;">
+                  <div class="col-md-4 ml-auto mr-auto">
+                    <img src="https://media-exp1.licdn.com/dms/image/C4E03AQHYh1QqD0Weng/profile-displayphoto-shrink_800_800/0/1610638071051?e=1625702400&v=beta&t=iaX3K4iv6rk8IKYwT_yN7mFfgznaptCxWEDm7Qob08g" alt="Thumbnail Image"
+                      class="img-raised rounded-circle img-fluid">
+                  </div>
+                </div>
+                <h4 class="card-title py-2">Preetish Biswal
+                  <br>
+                  <small class="card-description text-muted">Front-end Developer</small>
+                </h4>
+                <div class="card-body">
+                  <p class="card-description">Skilled Front-end Dev , fluent with Bootstrap framework and designing UIs</p>
+                </div>
+                <div class="card-footer justify-content-center">
+                  <a href="" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
+                  <a href="" class="btn btn-link btn-just-icon"><i class="fa fa-instagram"></i></a>
+                  <a href="https://www.linkedin.com/in/preetishbiswal777/" target="_blank" class="btn btn-link btn-just-icon"><i class="fa fa-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="team-member">
+              <div class="card card-plain" style="background-color: #e4f9f5;">
+                <div class="row" style="background-color: #f0f5f9;margin: 0;">
+                  <div class="col-md-4 ml-auto mr-auto">
+                    <img src="https://media-exp1.licdn.com/dms/image/C5603AQEGXAeV51kAjQ/profile-displayphoto-shrink_800_800/0/1612193799366?e=1625702400&v=beta&t=S68yFfmejxPVQeprJtc--yZo0EWta3YxygsczwX81sE" alt="Thumbnail Image"
+                      class="img-raised rounded-circle img-fluid">
+                  </div>
+                </div>
+                <h4 class="card-title py-2">Himanshu Shah
+                  <br>
+                  <small class="card-description text-muted">IOT Developer</small>
+                </h4>
+                <div class="card-body">
+                  <p class="card-description">Skilled IoT Dev , fluent with Arduino IDE and ThingSpeak Cloud services.</p>
+                </div>
+                <div class="card-footer justify-content-center">
+                  <a href="" class="btn btn-link  btn-just-icon-dark"><i class="fa fa-twitter"></i></a>
+                  <a href="" class="btn btn-link btn-just-icon"><i class="fa fa-instagram"></i></a>
+                  <a href="https://www.linkedin.com/in/himanshu-shah-356421198/" target="_blank" class="btn btn-link btn-just-icon"><i class="fa fa-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container contact-form" id="c1">
+
+        <h3 class="py-3" style="text-align: center; font-weight: bolder; letter-spacing: 4px; word-spacing: 10px;">CONTACT US</h3>
+       <div class="row">
+        <div class="col-md-6">
+          <img src="{% static 'images/contact.png' %}"  class="img-fluid" alt="">
+        </div>
+
+            <div class="col-md-6 px-3">
+              <form action="{% url 'contact' %}" method="POST" >
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" name="name" class="form-control" placeholder="Your Name"  required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="email" class="form-control" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="phone" class="form-control" placeholder="Your Phone Number" required>
+                </div>
+                <div class="form-group">
+                  <textarea name="message" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
+              </div>
+                <div class="form-group">
+                  <button type="submit" role="button" class="btnContact" >Send Message</button>
+                </div>
+            </div>
+           
+          </div>
+        </form> 
+        </div>
+
+{% endblock %}

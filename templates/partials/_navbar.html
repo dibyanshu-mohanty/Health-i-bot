@@ -1,0 +1,55 @@
+{% load static %}
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark" id="nav" style=" background-color: #6a9dfd;">
+    <a class="navbar-brand ml-5" href="#" style="color: black;text-shadow: 1px 1px #FF0000;;margin-left: 0%;font-size: 1.5rem; font-weight: 700;"> HEALTH-I-BOT</a>
+    <img src="" alt="">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active px-3">
+          <a class="nav-link" href="{% url 'index' %}" style="color: black;text-shadow: 1px 1px #FF0000;;margin-left: 0%;font-size: 1.2rem; font-weight: 700;">HOME<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item px-3">
+          <a class="nav-link" href="{% url 'index' %}" style="color: black;text-shadow: 1px 1px #FF0000;font-size: 1.2rem;font-weight: 700;">ABOUT </a>
+        </li>
+        <li class="nav-item px-3">
+          <a class="nav-link" href="{% url 'index' %}" style="color: black;text-shadow: 1px 1px #FF0000;margin-left: 0%;font-size: 1.2rem; font-weight: 700;" data-toggle="modal" data-target="#modal3">REQUEST DEMO</a>
+        </li>
+        <li class="nav-item px-3">
+          <a class="nav-link" href="{% url 'covids' %}" style="color: black;text-shadow: 1px 1px #FF0000;margin-left: 0%;font-size: 1.2rem; font-weight: 700;">COVID Tracker</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        {% if user.is_authenticated %}
+          <li class="nav-item px-3">
+            <a class="nav-link" href="{% url 'dashboard' %}" style="color: black;text-shadow: 1px 1px #FF0000;margin-left: 0%;font-size: 1.2rem; font-weight: 700;">Welcome {{ user.username }} (Dashboard)</a>
+          </li>
+          <li class="nav-item px-3">
+            <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}" style="color: black;text-shadow: 1px 1px #FF0000;margin-left: 0%;font-size: 1.2rem; font-weight: 700;">
+            <i class="fas fa-sign-out-alt"></i>Logout
+            </a>
+            <form action="{% url 'logout' %}" method="POST" id="logout">
+              {% csrf_token %}
+              <input type="hidden">
+            </form>
+          </li>
+        {% else %}
+          <li class="nav-item px-5">
+            <!-- <div class="modal-footer d-flex justify-content-center"> -->
+            <a href="{% url 'index' %}"  style="color: black;text-shadow: 1px 1px #FF0000;margin-left: 0%;font-size: 1.2rem; font-weight: 700;text-decoration: none;" data-toggle="modal" data-target="#modalRegisterForm1"><i class="fas fa-user-plus"
+                style="padding: 4px; color: black;"></i> REGISTER</a>
+          </li>
+          <li class="nav-item px-5">
+            <!-- <div class="modal-footer d-flex justify-content-center"> -->
+            <a href=""  style="color: black;text-shadow: 1px 1px #FF0000;margin-left: 0%;font-size: 1.2rem; font-weight: 700;text-decoration: none;" data-toggle="modal" data-target="#modalLoginForm2"><i class="fas fa-sign-in-alt"
+                style="padding: 4px;color: black;"></i> LOGIN</a>
+          </li>
+        {% endif %}
+      </ul>
+
+    </div>
+  </nav>
+  </nav>

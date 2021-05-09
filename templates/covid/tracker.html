@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- RESOURCES -->
+<section id="resources">
+  <div class="modal fade" id="modalResourceForm1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content" style="background-color: #ffe8df;">
+          <div class="modal-header text-center" style="background-color: #f5a8a8;">
+            <h4 class="modal-title w-100 font-weight-bold">Add Resource</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          
+          <div class="modal-body mx-3">
+          <form action="" method="POST">
+              {% csrf_token %}
+            <div class="md-form mb-3">
+              <i class="fas fa-user prefix grey-text"></i>
+              <input type="text" id="orangeForm-name" name="name" placeholder="Name" class="form-control">
+            </div>
+            <div class="md-form mb-3">
+              <i class="fas fa-envelope prefix grey-text"></i>
+              <input type="email" id="orangeForm-email" class="form-control" name="email" placeholder="Email Address">
+            </div>
+            <div class="md-form mb-3">
+              <i class="fas fa-phone-alt"></i>
+              <input type="phone" id="orangeForm-email" class="form-control" name="phone" placeholder="Phone No.">
+            </div>
+            <div class="form-group md-form mb-3">
+              <i class="fab fa-sourcetree"></i>
+              <label for="choice">Select Resource:</label>
+              <select class="form-control" id="sel1">
+                <option>Oxygen</option>
+                <option>Plasma</option>
+                <option>Food</option>
+                <option>Remdevisir</option>
+              </select>
+            </div>
+            <div class="md-form mb-3">
+              <i class="fas fa-user-check"></i>
+              <input type="text" id="orangeForm-number" class="form-control" name="ResourceName" placeholder="Resource lead Name">
+            </div>
+            <div class="md-form mb-3">
+              <i class="fas fa-mobile"></i>
+              <input type="text" id="orangeForm-number" class="form-control" name="ResourcePhone" placeholder="Resource lead Phone">
+            </div>
+            <div class="md-form mb-3">
+              <i class="fas fa-address-book"></i>
+              <input type="text" id="orangeForm-number" class="form-control" name="ResourcePlace" placeholder="Resource lead Address">
+            </div>
+            <div class="md-form mb-3">
+              <i class="fab fa-whatsapp"></i>
+              <input type="text" id="orangeForm-number" class="form-control" name="ResourceWhatsapp" placeholder="Resource lead WhatsApp (if avaiable)">
+            </div>
+            <div class="md-form mb-3">
+              <button type="submit" role="button" class="btn btn-lg" style="margin-left: 37%;background-color: #424874;color: white;">Add</button>
+  
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>  
+<!-- TRACKER   -->
+<section class="py-5" style="background-color: #6a9dfd;">
+<header class="top-container py-5" style="
+    text-align: left;
+    background-size: cover;
+    color: white;">
+    <div class="ml-5">
+      <section class="mb-4">
+        <h1 class="mx-3" style="font-family: 'New Tegomin', serif;"><strong>COVID Resources 😷</strong></h1>
+        <h3 class="mx-3" style="font-family: 'New Tegomin', serif; font-size: 24px;">During this hour of pandemic, We have made the info of COVID tracking easier by letting people add their states
+        to our website where they can always update themselves and the people around them about the COVID status at their place.<br> We will also be adding a feature
+        to let people add their Resources leads like oxygen cylinder,plasma in order to contribute to save the lives.</h3>
+      </section>
+    </div>
+  </header>
+  <div class="row" style="margin: 0; padding: 0;">
+  {% for listings in r %}
+  <div class="col-md-3 sm-6 lg-3" style="margin: 0; padding: 0;">
+    <div class="card ml-auto mr-auto mt-3" style="width: 18rem; border: 1px solid #e5e5e5; ">
+      <div class="card-body">
+        <h3 class="card-title"><strong>{{ listings.loc }}</strong></h3>
+        <p class="card-text"><i class="fas fa-virus"></i> Active Cases: {{ listings.confirmedCasesIndian }}</p>
+        <p class="card-text"><i class="fas fa-shield-virus"></i> Discharged Cases: {{ listings.discharged }}</p>
+        <p class="card-text">Deaths: {{ listings.deaths }}</p>
+        <h5 class="card-text"><button type="submit" role="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalResourceForm1">Add <i class="fas fa-plus"></i></button></h5>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  </div>
+  </section>
+
+{% endblock %}
