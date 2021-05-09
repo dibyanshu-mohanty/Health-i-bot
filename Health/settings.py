@@ -24,7 +24,6 @@ SECRET_KEY = 'django-insecure-e%(=7t3@s%bpn4t!d*=9j#)^sqmt%vv=xf-42=dj)10$td85c6
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-SECRET_KEY = config('SECRET_KEY')
 ALLOWED_HOSTS = ['healthibot.herokuapp.com' , '127.0.0.1']
 
 
