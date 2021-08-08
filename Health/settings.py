@@ -80,9 +80,9 @@ WSGI_APPLICATION = 'Health.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Healthdb',
-        'USER': 'postgres',
-        'PASSWORD': 'Dadu@2002',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT':'5432',
     }
@@ -146,6 +146,6 @@ MESSAGE_TAGS = {
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'biz.binary404@gmail.com'
-EMAIL_HOST_PASSWORD = 'jogqkueaksdpvytl'
+EMAIL_HOST_USER = 
+EMAIL_HOST_PASSWORD = 
 EMAIL_USE_TLS = True
